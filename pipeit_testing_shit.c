@@ -4,6 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
 #define READ END 0
 #define WRITE END 1
 int main(int argc, char *argv[]) {
