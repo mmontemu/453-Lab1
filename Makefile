@@ -3,16 +3,11 @@ CFLAGS = -c -g -Wall
 LD = gcc
 LDFLAGS = -g -Wall
 
-all: forkit tryit
+all: pipeit
 
-forkit: forkit.o
-	$(LD) $(LDFLAGS) -o forkit forkit.o
+pipeit: pipeit.o
+	$(LD) $(LDFLAGS) -o pipeit pipeit.o
 
-forkit.o: forkit.c
-	$(CC) $(CFLAGS) -o forkit.o forkit.c
+pipeit.o: pipeit.c
+	$(CC) $(CFLAGS) -o pipeit.o pipeit.c
 
-tryit: tryit.o
-	$(LD) $(LDFLAGS) -o tryit tryit.o
-
-tryit.o: tryit.c
-	$(CC) $(CFLAGS) -o tryit.o tryit.c
