@@ -7,8 +7,8 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-#define READ END 0
-#define WRITE END 1
+#define READ_END 0
+#define WRITE_END 1
 int main(int argc, char *argv[]) {
     int pipe_1[2];
     pid_t child1, child2, write_file;
@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
     if ( ! (child1 = fork()) ) {
         /* child one stuff */
         /* dup appropriate pipe ends */
-        if ( -1 == dup2(one[WRITE_END],STDOUT_FILENO) ) {
+        if ( -1 == dup2(pipe_1[WRITE_END],STDOUT_FILENO) ) {
             perror("dup2");
             exit(-1);
         }
@@ -56,10 +56,10 @@ int main(int argc, char *argv[]) {
     close(pipe_1[READ_END]);
     close(pipe_1[WRITE_END]);
     close(write_file);
-    if ( −1 == wait(NULL) ) { /* wait for one child */
+    if ( -1 == wait(NULL) ) { /* wait for one child */
         perror("wait");
     }
-    if ( −1 == wait(NULL) ) { /* wait for the second child */
+    if ( -1 == wait(NULL) ) { /* wait for the second child */
         perror("wait");
     }
     exit(0);
