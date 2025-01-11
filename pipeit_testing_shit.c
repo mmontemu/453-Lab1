@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
         perror("error creating pipe");
         exit(-1);
     }
-    write_file = open("./outfile", O_WRONLY | O_CREAT | O_TRUNC,  S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)
+    write_file = open("./outfile", O_WRONLY | O_CREAT | O_TRUNC,  S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
     if ( ! (child1 = fork()) ) {
         /* child one stuff */
         /* dup appropriate pipe ends */
